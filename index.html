@@ -57,6 +57,9 @@
         .caption h3 {
             margin-bottom: 8px;
             color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .caption p {
@@ -72,29 +75,42 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         const imageList = [
-            "img/zofiaanna.com.png",
-            "img/zofiaanna.com_newborn-and-baby.png",
-            "img/zofiaanna.com_headshots.png"
+            {
+                path: "img/zofiaanna.com.png",
+                url: "https://zofiaanna.com",
+                caption: "Zofia Anna Photography - Main Website"
+            },
+            {
+                path: "img/zofiaanna.com_newborn-and-baby.png",
+                url: "https://zofiaanna.com/newborn-and-baby",
+                caption: "Newborn & Baby Photography Portfolio"
+            },
+            {
+                path: "img/zofiaanna.com_headshots.png",
+                url: "https://zofiaanna.com/headshots",
+                caption: "Professional Headshots Portfolio"
+            }
         ];
         
-        function createGalleryItem(imagePath) {
+        function createGalleryItem(image) {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             
             const img = document.createElement('img');
-            img.src = imagePath;
-            img.alt = imagePath.split('/').pop();
+            img.src = image.path;
+            img.alt = image.path.split('/').pop();
             img.setAttribute('data-fancybox', 'gallery');
-            img.setAttribute('data-src', imagePath);
+            img.setAttribute('data-src', image.path);
+            img.setAttribute('data-caption', image.caption);
             
             const caption = document.createElement('div');
             caption.className = 'caption';
             
             const title = document.createElement('h3');
-            title.textContent = imagePath.split('/').pop().split('.')[0];
+            title.textContent = image.url.replace(/^https?:\/\//, '');
             
             const description = document.createElement('p');
-            description.textContent = `Description for ${title.textContent}`;
+            description.textContent = image.caption;
             
             caption.appendChild(title);
             caption.appendChild(description);
@@ -107,8 +123,8 @@
 
         function initializeGallery() {
             const gallery = document.getElementById('gallery');
-            imageList.forEach(imagePath => {
-                const galleryItem = createGalleryItem(imagePath);
+            imageList.forEach(image => {
+                const galleryItem = createGalleryItem(image);
                 gallery.appendChild(galleryItem);
             });
 
