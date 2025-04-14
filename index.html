@@ -54,12 +54,20 @@
             text-align: center;
         }
 
-        .caption h3 {
-            margin-bottom: 8px;
+        .caption a {
+            text-decoration: none;
             color: #333;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .caption a:hover {
+            color: #0066cc;
+            text-decoration: underline;
         }
 
         .caption p {
@@ -111,8 +119,10 @@
             const caption = document.createElement('div');
             caption.className = 'caption';
             
-            const title = document.createElement('h3');
+            const title = document.createElement('a');
+            title.href = image.url;
             title.textContent = image.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+            title.target = '_blank';
             
             const description = document.createElement('p');
             description.textContent = image.caption;
