@@ -77,19 +77,24 @@
         const imageList = [
             {
                 path: "img/zofiaanna.com.png",
-                url: "https://zofiaanna.com",
-                caption: "Zofia Anna Photography - Main Website"
+                url: "https://zofiaanna.com/",
+                caption: "Zofia Anna Photography - Main Website",
             },
             {
                 path: "img/zofiaanna.com_newborn-and-baby.png",
-                url: "https://zofiaanna.com/newborn-and-baby",
-                caption: "Newborn & Baby Photography Portfolio"
+                url: "https://zofiaanna.com/newborn-and-baby/",
+                caption: "Newborn & Baby Photography Portfolio",
             },
             {
                 path: "img/zofiaanna.com_headshots.png",
-                url: "https://zofiaanna.com/headshots",
-                caption: "Professional Headshots Portfolio"
-            }
+                url: "https://zofiaanna.com/headshots/",
+                caption: "Professional Headshots Portfolio",
+            },
+            {
+                path: "img/zofiaanna.com_school.png",
+                url: "https://zofiaanna.com/schools/",
+                caption: "Personal School Portraiture",
+            },
         ];
         
         function createGalleryItem(image) {
@@ -107,7 +112,7 @@
             caption.className = 'caption';
             
             const title = document.createElement('h3');
-            title.textContent = image.url.replace(/^https?:\/\//, '');
+            title.textContent = image.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
             
             const description = document.createElement('p');
             description.textContent = image.caption;
