@@ -63,35 +63,51 @@
     </style>
 </head>
 <body>
-    <div class="gallery">
-        <div class="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 1">
-            <div class="caption">
-                <h3>Image Title 1</h3>
-                <p>This is a description for the first image.</p>
-            </div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 2">
-            <div class="caption">
-                <h3>Image Title 2</h3>
-                <p>This is a description for the second image.</p>
-            </div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 3">
-            <div class="caption">
-                <h3>Image Title 3</h3>
-                <p>This is a description for the third image.</p>
-            </div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 4">
-            <div class="caption">
-                <h3>Image Title 4</h3>
-                <p>This is a description for the fourth image.</p>
-            </div>
-        </div>
-    </div>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const imageList = [
+            "img/zofiaanna.com.png",
+            "img/zofiaanna.com_newborn-and-baby.png",
+            "img/zofiaanna.com_headshots.png"
+        ];
+        
+        function createGalleryItem(imagePath) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.alt = imagePath.split('/').pop();
+            
+            const caption = document.createElement('div');
+            caption.className = 'caption';
+            
+            const title = document.createElement('h3');
+            title.textContent = imagePath.split('/').pop().split('.')[0];
+            
+            const description = document.createElement('p');
+            description.textContent = `Description for ${title.textContent}`;
+            
+            caption.appendChild(title);
+            caption.appendChild(description);
+            
+            item.appendChild(img);
+            item.appendChild(caption);
+            
+            return item;
+        }
+
+        function initializeGallery() {
+            const gallery = document.getElementById('gallery');
+            imageList.forEach(imagePath => {
+                const galleryItem = createGalleryItem(imagePath);
+                gallery.appendChild(galleryItem);
+            });
+        }
+
+        // Initialize gallery when the page loads
+        window.addEventListener('DOMContentLoaded', initializeGallery);
+    </script>
 </body>
 </html> 
