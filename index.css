@@ -73,11 +73,12 @@ body {
 .caption a {
     text-decoration: none;
     color: #333;
+    font-size: 1em;
+    font-family: monospace;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
-    margin-bottom: 8px;
     transition: color 0.2s ease;
 }
 
@@ -88,5 +89,6 @@ body {
 
 .caption p {
     color: #666;
-    font-size: 0.9em;
+    font-size: 1em;
+    margin-bottom: 8px;
 } 

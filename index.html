@@ -8,9 +8,28 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+    <!-- Gallery Container -->
     <div class="gallery" id="gallery"></div>
 
+    <!-- Gallery Item Template -->
+    <template id="gallery-item-template">
+        <div class="gallery-item">
+            <div data-logo-overlay class="logo-overlay">
+                <img data-logo-img src="" alt="Logo">
+            </div>
+            <img data-fancybox="gallery" data-caption="" data-src="" src="" alt="">
+            <div class="caption">
+                <p data-description></p>
+                <a data-title href="" target="_blank"></a>
+            </div>
+        </div>
+    </template>
+
+    <!-- Fancybox -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    <!-- Image List Data -->
     <script>
         const imageList = [
             {
@@ -49,8 +68,16 @@
                 caption: "ShootProof Studio Galleries",
                 logo: "img/logo/shootproof.svg",
             },
+            {
+                path: "img/shootproof-public-galleries.png",
+                url: "https://zoanna.shootproof.com/",
+                caption: "ShootProof Public Galleries",
+                logo: "img/logo/shootproof.svg",
+            },
         ];
     </script>
+
+    <!-- Initialize Gallery -->
     <script src="index.js"></script>
 </body>
 </html>

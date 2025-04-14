@@ -1,47 +1,30 @@
 function createGalleryItem(image) {
-    const item = document.createElement('div');
-    item.className = 'gallery-item';
+    const template = document.getElementById('gallery-item-template');
+    const item = template.content.cloneNode(true);
     
-    const img = document.createElement('img');
-    img.src = image.path;
-    img.alt = image.path.split('/').pop();
-    img.setAttribute('data-fancybox', 'gallery');
-    img.setAttribute('data-src', image.path);
-    img.setAttribute('data-caption', image.caption);
+    // Set main image properties
+    const mainImg = item.querySelector('img[data-fancybox]');
+    mainImg.src = image.path;
+    mainImg.alt = image.path.split('/').pop();
+    mainImg.setAttribute('data-src', image.path);
+    mainImg.setAttribute('data-caption', image.caption);
     
-    // Add logo overlay if logo exists
+    // Handle logo overlay
+    const logoOverlay = item.querySelector('[data-logo-overlay]');
     if (image.logo) {
-        console.log(image.logo);
-        const logoOverlay = document.createElement('div');
-        logoOverlay.className = 'logo-overlay';
-        console.log('logoOverlay', logoOverlay);
-        
-        const logoImg = document.createElement('img');
+        const logoImg = item.querySelector('[data-logo-img]');
         logoImg.src = image.logo;
-        logoImg.alt = 'Logo';
-        console.log('logoImg', logoImg);
-
-        logoOverlay.appendChild(logoImg);
-        item.appendChild(logoOverlay);
-        console.log('item', item);
+    } else {
+        logoOverlay.remove();
     }
     
-    const caption = document.createElement('div');
-    caption.className = 'caption';
-    
-    const title = document.createElement('a');
+    // Set caption properties
+    const title = item.querySelector('[data-title]');
     title.href = image.url;
     title.textContent = image.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-    title.target = '_blank';
     
-    const description = document.createElement('p');
+    const description = item.querySelector('[data-description]');
     description.textContent = image.caption;
-    
-    caption.appendChild(title);
-    caption.appendChild(description);
-    
-    item.appendChild(img);
-    item.appendChild(caption);
     
     return item;
 }
