@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            flex: 1 1 300px;
+            max-width: 300px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .caption {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .caption h3 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .caption p {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 1">
+            <div class="caption">
+                <h3>Image Title 1</h3>
+                <p>This is a description for the first image.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 2">
+            <div class="caption">
+                <h3>Image Title 2</h3>
+                <p>This is a description for the second image.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 3">
+            <div class="caption">
+                <h3>Image Title 3</h3>
+                <p>This is a description for the third image.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Placeholder Image 4">
+            <div class="caption">
+                <h3>Image Title 4</h3>
+                <p>This is a description for the fourth image.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
